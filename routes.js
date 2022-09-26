@@ -14,4 +14,8 @@ router.post('/ajouter/:sport', (req, res) => {
   res.send(`la liste des sports : ${infos}`)
 })
 
+router.get('/', (req, res) => {
+  res.json(infos)
+})
+
 module.exports = router

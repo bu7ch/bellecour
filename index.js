@@ -5,12 +5,11 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 const router = require("./routes");
+const oursRouter = require("./ours")
 app.use(express.json());
+app.use(express.urlencoded({ extended:false}))
 app.get("/", (req, res) => {
   res.send("Welcome to the Express API");
-});
-app.get("/bonjour/:name", (req, res) => {
-  res.send("bonjour " + req.params.name);
 });
 // DRY
 // app.get('/sports/tennis', (req, res)=>{
@@ -21,6 +20,7 @@ app.get("/bonjour/:name", (req, res) => {
 // })
 
 app.use("/sports", router);
+app.use("/ours", oursRouter)
 
 app.listen(port, console.log(`⚡️ [Server is running on port :${port}]`));
 
